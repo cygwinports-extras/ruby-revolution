@@ -6,3 +6,5 @@ HOMEPAGE="http://revolution.rubyforge.org/"
 SRC_URI="mirror://rubyforge/revolution/${ORIG_PN}-${PV}.zip"
 
 DISTCLEANFILES="revolution.so"
+
+RDOC_SOURCE="revolution.c"
