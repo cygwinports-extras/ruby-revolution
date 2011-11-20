@@ -1,5 +1,5 @@
 category: Gnome Ruby
-requires: libebook1.2_10 libecal1.2_8 libglib2.0_0 libical0 ruby
+requires: libebook1.2_12 libecal1.2_10 libglib2.0_0 libical0 ruby
 sdesc: "Ruby Evolution-Data-Server bindings"
 ldesc: "Revolution is a Ruby binding for the Evolution Data Server 
 addressbook and calendar APIs."
