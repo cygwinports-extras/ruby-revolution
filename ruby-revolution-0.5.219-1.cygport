@@ -1,0 +1,18 @@
+SVN_URI="svn://rubyforge.org/var/svn/revolution"
+SVN_BRANCH="trunk/revolution"
+SVN_REV=${PV[3]}
+ORIG_PN="revolution"
+inherit ruby svn
+
+CATEGORY="Ruby"
+SUMMARY="Ruby Evolution Data Server bindings"
+DESCRIPTION="Revolution is a Ruby binding for the Evolution Data Server
+addressbook and calendar APIs."
+HOMEPAGE="http://revolution.rubyforge.org/"
+#SRC_URI="mirror://rubyforge/revolution/${ORIG_PN}-${PV}.zip"
+PATCH_URI="http://pkgs.fedoraproject.org/cgit/${PN}.git/plain/revolution-ruby-1.9.patch"
+PATCH_URI+=" 0.5-eds34.patch"
+
+DISTCLEANFILES="Makefile revolution.so"
+
+RDOC_SOURCE="revolution.c"

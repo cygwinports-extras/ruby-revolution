@@ -1,0 +1,31 @@
+--- origsrc/revolution/revolution.c	2012-08-23 23:21:07.872258300 -0500
++++ src/revolution/revolution.c	2012-08-23 23:50:43.509818900 -0500
+@@ -1051,23 +1051,19 @@ static VALUE esource_group_init(VALUE se
+ }
+ 
+ static void copy_into_esource(VALUE rb_source, ESource* source){
+-  gboolean has_color;
+-  guint32 color;
++  char *color_string;
+   rb_iv_set(rb_source, "@uid", rb_str_new2(e_source_peek_uid(source)));
+   rb_iv_set(rb_source, "@name", rb_str_new2(e_source_peek_name(source)?e_source_peek_name(source):""));
+   rb_iv_set(rb_source, "@uri", rb_str_new2(e_source_get_uri(source)?e_source_get_uri(source):""));
+   rb_iv_set(rb_source, "@absolute_uri", rb_str_new2(e_source_peek_absolute_uri(source)?e_source_peek_absolute_uri(source):""));
+   rb_iv_set(rb_source, "@relative_uri", rb_str_new2(e_source_peek_relative_uri(source)?e_source_peek_relative_uri(source):""));  
+   rb_iv_set(rb_source, "@read_only", e_source_get_readonly(source) ? Qtrue : Qfalse);  
+-  has_color = e_source_get_color (source, &color);
+-  if (has_color) {
+-    char *color_string = g_strdup_printf (COLOR_FORMAT_STRING, color);
++  color_string = g_strdup (e_source_peek_color_spec (source));
++  if (color_string)
+     rb_iv_set(rb_source, "@color", rb_str_new2(color_string));  
+-    g_free (color_string);
+-  }
+-  else {
++  else
+     rb_iv_set(rb_source, "@color", Qnil);  
+-  }
++  g_free (color_string);
+ }
+ 
+ 
